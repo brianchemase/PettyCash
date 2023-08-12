@@ -14,7 +14,7 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 
-	<title>PEttyCash System</title>
+	<title>PettyCash System</title>
 
 	<!-- <link href="css/app.css" rel="stylesheet"> -->
     <link href="{{asset('admins/css/app.css')}}" rel="stylesheet">
@@ -50,8 +50,8 @@
 	</div>
 
 
-    <script src="{{asset('adminsdash/js/app.js')}}"></script>
-	<script src="{{asset('adminsdash/js/datatables.js')}}"></script>
+    <script src="{{asset('admins/js/app.js')}}"></script>
+	<script src="{{asset('admins/js/datatables.js')}}"></script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {

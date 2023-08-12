@@ -26,6 +26,25 @@ class DashboardController extends Controller
         return view ('admins.home')->with($data);
     }
 
+    public function managestaff()
+    {
+
+
+
+        $data1="";
+
+
+
+        $data = [
+            'data1' => $data1,
+            'data2' => $data1,
+            'data3' => $data1,
+            'data4' => $data1,
+            // Add more data to the array as needed
+        ];
+        return view ('admins.staffmanagement')->with($data);
+    }
+
     public function dashboardforms()
     {
         

@@ -2,7 +2,7 @@
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ route('admindash') }}">
             <!-- <img src="{{ asset('logo/sisdologo.png') }}" alt="Ndururumo" width="50" height="60"> -->
-            <span class="align-middle">UBS SYSTEM </span>
+            <span class="align-middle">PettyCash SYSTEM </span>
         </a>
         <ul class="sidebar-nav">
             <li class="sidebar-header">
@@ -16,40 +16,41 @@
             </li>
 
             <li class="sidebar-header">
-                Role Management
+                Staff Management
             </li>
 
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/role_management/roles/create">
-                    <i class="align-middle"data-feather="user"></i> <span class="align-middle">Create role</span>
+                <a class="sidebar-link" href="{{ route('managestaff') }}">
+                    <i class="align-middle"data-feather="user"></i> <span class="align-middle">Manage Staff</span>
+                </a>
+            </li>
+            
+
+            <li class="sidebar-header">
+                Fund Management
+            </li>
+
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="#">
+                    <i class="align-middle"data-feather="user"></i> <span class="align-middle">Funding Allocation</span>
                 </a>
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="/role_management/roles/">
-                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Manage Roles</span>
+                <a class="sidebar-link" href="#">
+                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Manage permissions</span>
+                </a>
+            </li>
+
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="#">
+                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Manage Categories</span>
                 </a>
             </li>
 
             <li class="sidebar-header">
-                Permissions Management
-            </li>
-
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="/role_management/permissions/create">
-                    <i class="align-middle"data-feather="user"></i> <span class="align-middle">Create permissions</span>
-                </a>
-            </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="/role_management/permissions/">
-                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Manage
-                        permissions</span>
-                </a>
-            </li>
-
-            <li class="sidebar-header">
-                Bill Management
+                Reports
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admindash') }}">

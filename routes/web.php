@@ -16,21 +16,30 @@ use App\Http\Controllers\AllocationsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
-Route::group(
-    ['prefix' => 'admins'],
-    function () {
-
-        Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
+Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
 
         Route::get('/forms', [DashboardController::class, 'dashboardforms'])->name('adminforms');
 
         Route::get('/blank', [DashboardController::class, 'blankpage'])->name('blankpage');
 
         Route::get('/table', [DashboardController::class, 'tablepage'])->name('tablepage');
-    }
-);
+        Route::get('/StaffManagement', [DashboardController::class, 'managestaff'])->name('managestaff');
+
+// Route::group(
+//     ['prefix' => 'admins'],
+//     function () {
+
+//         Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
+
+//         Route::get('/forms', [DashboardController::class, 'dashboardforms'])->name('adminforms');
+
+//         Route::get('/blank', [DashboardController::class, 'blankpage'])->name('blankpage');
+
+//         Route::get('/table', [DashboardController::class, 'tablepage'])->name('tablepage');
+//     }
+// );

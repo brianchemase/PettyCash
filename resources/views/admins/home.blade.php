@@ -7,7 +7,7 @@
     <main class="content">
         <div class="container-fluid p-0">
 
-            <h1 class="h3 mb-3"><strong>UBS SYSTEM</strong> Dashboard</h1>
+            <h1 class="h3 mb-3"><strong>PettyCash</strong> Dashboard</h1>
 
             <div class="row">
                 <div class="col-sm-6 col-xl-3">
@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Pending Bills</h5>
+                                    <h5 class="card-title">Wallet Balance</h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -33,7 +33,7 @@
 
                             <h1 class="mt-1 mb-3">KES 15325</h1>
                             <div class="mb-0">
-                                <span class="text-muted">Current Pending Bills</span>
+                                <span class="text-muted">Current Wallet Balance</span>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Active Meters</h5>
+                                    <h5 class="card-title">Active Staff</h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -62,7 +62,7 @@
 
                             <h1 class="mt-1 mb-3"> 150</h1>
                             <div class="mb-0">
-                                <span class="text-muted">Total active metres</span>
+                                <span class="text-muted">Total active staff</span>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Amount Paid</h5>
+                                    <h5 class="card-title">Amount Withdrawn</h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -90,7 +90,7 @@
 
                             <div class="mb-0">
 
-                                <span class="text-muted">Total Amount Registered</span>
+                                <span class="text-muted">Total Amount Withdrawn</span>
                             </div>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Monthly Payment</h5>
+                                    <h5 class="card-title">Monthly Transaction</h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -121,7 +121,7 @@
                             <h1 class="mt-1 mb-3">600</h1>
                             <div class="mb-0">
 
-                                <span class="text-muted">Total monthly Amount registered</span>
+                                <span class="text-muted">Total monthly Amount Transacted</span>
                             </div>
                         </div>
                     </div>
@@ -136,19 +136,19 @@
                     <div class="card flex-fill">
                         <div class="card-header">
 
-                            <h5 class="card-title mb-0">Loan Details Available</h5>
+                            <h5 class="card-title mb-0">Staff Past Threshold</h5>
                         </div>
                         <table class="table table-hover my-0">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Loan ID</th>
+                                    <th>Staff Name</th>
                                     <th class="d-none d-xl-table-cell">Application Date</th>
                                     <th class="d-none d-xl-table-cell">Start Date</th>
 
-                                    <th class="d-none d-xl-table-cell">Loan Amount</th>
-                                    <th class="d-none d-xl-table-cell">Monthly Instalments</th>
-                                    <th>Balance</th>
+                                    <th class="d-none d-xl-table-cell">Request Amount</th>
+                                    <th class="d-none d-xl-table-cell">Monthly Allocation</th>
+                                    <th>Wallet Balance</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
