@@ -60,7 +60,7 @@
 									<table id="datatables-buttons" class="table table-striped" style="width:100%">
 										<thead>
 											<tr>
-											<th>ID</th>
+											<th>Photo</th>
 											<th>First Name</th>
 											<th>Middle Name</th>
 											<th>Last Name</th>
@@ -75,9 +75,20 @@
 											</tr>
 										</thead>
 										<tbody>
+											@php
+											$ppt="";
+
+											@endphp
 											@foreach($staffData as $staff)
+												
 												<tr>
-													<td>{{ $staff->id }}</td>
+												<td>
+													@if($staff->ppt_photo)
+													<img src="{{ asset('storage/ppt/'.$staff->ppt_photo) }}" width="50" height="50" class="rounded-circle my-n1" alt="Avatar">
+													@else
+													No Photo Available
+													@endif
+												</td>
 													<td>{{ $staff->first_name }}</td>
 													<td>{{ $staff->middle_name }}</td>
 													<td>{{ $staff->last_name }}</td>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -16,10 +18,22 @@ class DashboardController extends Controller
 
 
 
+        $paybillno="2839102";
+        $paybillBalance="10000";
+        $totalDisbusments="256370";
+        $AllocatedPettyCash="175000";
+        $TotalWithdrawn="25604758";
+
         $data = [
-            'data1' => $data1,
-            'data2' => $data1,
-            'data3' => $data1,
+            'paybillno' => $paybillno,
+            'paybillBalance' => $paybillBalance,
+            'totalDisbusments' => $totalDisbusments,
+            'AllocatedPettyCash' => $AllocatedPettyCash,
+            'TotalWithdrawn' => $TotalWithdrawn,
+            'data4' => $data1,
+            'data4' => $data1,
+            'data4' => $data1,
+            'data4' => $data1,
             'data4' => $data1,
             // Add more data to the array as needed
         ];
@@ -61,16 +75,17 @@ class DashboardController extends Controller
                     'id_number' => 'required|string|unique:tbl_staff,id_no',
                 ]);
 
+              //return $request->all();
 
-                if ($request->hasFile('passport')) {
+                if ($request->hasFile('ppt')) {
 
                     $request->validate([
-                        'passport' => 'mimes:png,jpg,jpeg|max:2048' // Only allow .jpg, .bmp and .png file types.
+                        'ppt' => 'mimes:png,jpg,jpeg|max:2048' // Only allow .jpg, .bmp and .png file types.
                     ]);
             
                     $finfo = new \finfo(FILEINFO_MIME_TYPE);
                      // Save the file locally in the storage/public/ folder under a new folder named /ppts
-                     $request->passport->store('ppts', 'public');
+                     $request->ppt->store('ppt', 'public');
                 }
 
                 $staff_id="P".$request->input('id_number');
@@ -85,6 +100,7 @@ class DashboardController extends Controller
                         'access_pin' => $access_pin, // Add your logic for generating an access pin
                         'staff_id' => $staff_id,   // Add your logic for generating a staff ID
                         'id_no' => $request->input('id_number'),
+                        'ppt_photo'=>$request->ppt->hashName(),
                         'account_status' => 'active',
                         'created_at' => now(),
                         'updated_at' => now(),

@@ -2,16 +2,16 @@
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ route('admindash') }}">
             <!-- <img src="{{ asset('logo/sisdologo.png') }}" alt="Ndururumo" width="50" height="60"> -->
-            <span class="align-middle">PettyCash SYSTEM </span>
+            <span class="align-middle" style="color: orange;">PettyCash SYSTEM </span>
         </a>
         <ul class="sidebar-nav">
             <li class="sidebar-header">
                 Service Tabs
             </li>
 
-            <li class="sidebar-item active">
+            <li class="sidebar-item active" style="color: orange;">
                 <a class="sidebar-link" href="{{ route('admindash') }}">
-                    <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+                    <i class="align-middle" data-feather="sliders" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Dashboard</span>
                 </a>
             </li>
 
@@ -22,7 +22,7 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('managestaff') }}">
-                    <i class="align-middle"data-feather="user"></i> <span class="align-middle">Manage Staff</span>
+                    <i class="align-middle"data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Manage Staff</span>
                 </a>
             </li>
             
@@ -34,18 +34,18 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
-                    <i class="align-middle"data-feather="user"></i> <span class="align-middle">Funding Allocation</span>
+                    <i class="align-middle"data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Funding Allocation</span>
                 </a>
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Manage permissions</span>
+                    <i class="align-middle" data-feather="airplay" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Manage permissions</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="airplay"></i> <span class="align-middle">Manage Categories</span>
+                    <i class="align-middle" data-feather="airplay" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Manage Categories</span>
                 </a>
             </li>
 
@@ -54,7 +54,7 @@
             </li>
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admindash') }}">
-                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Billing</span>
+                    <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Billing</span>
                 </a>
             </li>
 
@@ -64,14 +64,14 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('admindash') }}">
-                    <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Payment
+                    <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Payment
                         Registration</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Generate
+                    <i class="align-middle" data-feather="align-left"></i> <span class="align-middle" style="color: orange;">Generate
                         Statement</span>
                 </a>
             </li>
@@ -80,19 +80,19 @@
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('blankpage') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Blank Page</span>
+                    <i class="align-middle" data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Blank Page</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('adminforms') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Form Page</span>
+                    <i class="align-middle" data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Form Page</span>
                 </a>
             </li>
 
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('tablepage') }}">
-                    <i class="align-middle" data-feather="user"></i> <span class="align-middle">Table Page</span>
+                    <i class="align-middle" data-feather="user"></i> <span class="align-middle" style="color: orange;">Table Page</span>
                 </a>
             </li>
 

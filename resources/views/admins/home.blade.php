@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Wallet Balance</h5>
+                                    <h5 class="card-title"><strong>Petty Cash Balance</strong></h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -31,9 +31,9 @@
                                 </div>
                             </div>
 
-                            <h1 class="mt-1 mb-3">KES 15325</h1>
+                            <h1 class="mt-1 mb-3">KES {{number_format($paybillBalance)}}</h1>
                             <div class="mb-0">
-                                <span class="text-muted">Current Wallet Balance</span>
+                                <span class="text-muted">Mpesa Paybill {{$paybillno}}</span>
                             </div>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Active Staff</h5>
+                                    <h5 class="card-title"><strong>Total Disbusments</strong></h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -60,47 +60,20 @@
                                 </div>
                             </div>
 
-                            <h1 class="mt-1 mb-3"> 150</h1>
+                            <h1 class="mt-1 mb-3"> {{number_format($totalDisbusments)}}</h1>
                             <div class="mb-0">
-                                <span class="text-muted">Total active staff</span>
+                                <span class="text-muted">Total Disbusments Done</span>
                             </div>
                         </div>
                     </div>
                 </div>
+               
                 <div class="col-sm-6 col-xl-3">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col mt-0">
-                                    <h5 class="card-title">Amount Withdrawn</h5>
-                                </div>
-
-                                <div class="col-auto">
-                                    <div class="stat text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-activity align-middle">
-                                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <h1 class="mt-1 mb-3">1400</h1>
-
-                            <div class="mb-0">
-
-                                <span class="text-muted">Total Amount Withdrawn</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-xl-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col mt-0">
-                                    <h5 class="card-title">Monthly Transaction</h5>
+                                    <h5 class="card-title"><strong>Allocated Petty Cash</strong></h5>
                                 </div>
 
                                 <div class="col-auto">
@@ -118,25 +91,122 @@
                                 </div>
                             </div>
 
-                            <h1 class="mt-1 mb-3">600</h1>
+                            <h1 class="mt-1 mb-3">KSH {{number_format($AllocatedPettyCash)}}</h1>
                             <div class="mb-0">
 
-                                <span class="text-muted">Total monthly Amount Transacted</span>
+                                <span class="text-muted">Total Allocated Petty Cash</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-xl-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col mt-0">
+                                    <h5 class="card-title"><strong>Amount Withdrawn</strong></h5>
+                                </div>
+
+                                <div class="col-auto">
+                                    <div class="stat text-primary">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="feather feather-activity align-middle">
+                                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="mt-1 mb-3">{{number_format($TotalWithdrawn)}}</h1>
+
+                            <div class="mb-0">
+
+                                <span class="text-muted">Total Amount Withdrawn</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <div class="col-12 col-lg-12 col-xxl-12 d-flex">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+									<div class="card-actions float-right">
+										<div class="dropdown show">
+											<a href="#" data-toggle="dropdown" data-display="static">
+												<i class="align-middle" data-feather="more-horizontal"></i>
+											</a>
 
+											<div class="dropdown-menu dropdown-menu-right">
+												<a class="dropdown-item" href="#">Action</a>
+												<a class="dropdown-item" href="#">Another action</a>
+												<a class="dropdown-item" href="#">Something else here</a>
+											</div>
+										</div>
+									</div>
+									<h5 class="card-title mb-0"><strong>Petty Cash Summary</strong></h5>
+								</div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        // Bar chart
+                                        new Chart(document.getElementById("chartjs-dashboard-bar"), {
+                                            type: "bar",
+                                            data: {
+                                                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                                                datasets: [{
+                                                    label: "This year",
+                                                    backgroundColor: window.theme.warning,
+                                                    borderColor: window.theme.warning,
+                                                    hoverBackgroundColor: window.theme.warning,
+                                                    hoverBorderColor: window.theme.warning,
+                                                    data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
+                                                    barPercentage: .75,
+                                                    categoryPercentage: .5
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                legend: {
+                                                    display: false
+                                                },
+                                                scales: {
+                                                    yAxes: [{
+                                                        gridLines: {
+                                                            display: false
+                                                        },
+                                                        stacked: false,
+                                                        ticks: {
+                                                            stepSize: 20
+                                                        }
+                                                    }],
+                                                    xAxes: [{
+                                                        stacked: false,
+                                                        gridLines: {
+                                                            color: "transparent"
+                                                        }
+                                                    }]
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+								<div class="card-body d-flex w-100">
+									<div class="align-self-center chart chart-lg">
+										<canvas id="chartjs-dashboard-bar"></canvas>
+									</div>
+								</div>
+							</div>
+				</div>
 
 
             <div class="row">
-                <div class="col-12 col-lg-12 col-xxl-12 d-flex">
+                <div class="col-12 col-lg-12 col-xxl-6 d-flex">
                     <div class="card flex-fill">
                         <div class="card-header">
 
-                            <h5 class="card-title mb-0">Staff Past Threshold</h5>
+                            <h5 class="card-title mb-0"><strong>Staff Past Threshold</strong></h5>
                         </div>
                         <table class="table table-hover my-0">
                             <thead>
@@ -213,7 +283,50 @@
                     </div>
                 </div>
 
-            </div>
+                <div class="col-12 col-lg-12 col-xxl-6 d-flex">
+							<div class="card flex-fill">
+								<div class="card-header">
+									<h5 class="card-title"><strong>Petty Cash Composition</strong></h5>
+									<h6 class="card-subtitle text-muted">KES {{number_format($TotalWithdrawn)}} Amount Withdrawn Composition.</h6>
+								</div>
+                                <script>
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        // Doughnut chart
+                                        new Chart(document.getElementById("chartjs-doughnut"), {
+                                            type: "doughnut",
+                                            data: {
+                                                labels: ["Fuel", "Airtime", "Transport", "Other"],
+                                                datasets: [{
+                                                    data: [260, 125, 54, 146],
+                                                    backgroundColor: [
+                                                        window.theme.primary,
+                                                        window.theme.success,
+                                                        window.theme.warning,
+                                                        "#dee2e6"
+                                                    ],
+                                                    borderColor: "transparent"
+                                                }]
+                                            },
+                                            options: {
+                                                maintainAspectRatio: false,
+                                                cutoutPercentage: 65,
+                                                legend: {
+                                                    display: false
+                                                }
+                                            }
+                                        });
+                                    });
+                                </script>
+								<div class="card-body">
+									<div class="chart chart-sm">
+										<canvas id="chartjs-doughnut"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
+
+            </div>                   
+					
 
         </div>
     </main>
