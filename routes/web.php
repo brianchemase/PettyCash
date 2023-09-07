@@ -30,6 +30,11 @@ Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
         Route::get('/table', [DashboardController::class, 'tablepage'])->name('tablepage');
         Route::get('/StaffManagement', [DashboardController::class, 'managestaff'])->name('managestaff');
 
+        Route::post('/RegisterStaff', [DashboardController::class, 'registerStaff'])->name('savestaffdata');
+
+
+        
+
 // Route::group(
 //     ['prefix' => 'admins'],
 //     function () {
