@@ -59,6 +59,15 @@
             </li>
 
             <li class="sidebar-header">
+                Settings
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('transactionpurposecreate') }}">
+                    <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Transaction Purpose</span>
+                </a>
+            </li>
+
+            <li class="sidebar-header">
                 payment Management
             </li>
 

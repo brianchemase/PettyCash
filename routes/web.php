@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\AllocationsController;
+use App\Http\Controllers\TransactionPurposeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,12 @@ Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
         Route::get('/StaffManagement', [DashboardController::class, 'managestaff'])->name('managestaff');
 
         Route::post('/RegisterStaff', [DashboardController::class, 'registerStaff'])->name('savestaffdata');
+
+        //transaction purpose
+        Route::get('/RegisterTransactionpurpose', [TransactionPurposeController::class, 'create'])->name('transactionpurposecreate');
+        Route::post('/Savetransactionpurpose', [TransactionPurposeController::class, 'RegisterPurpose'])->name('savetransactionpurpose');
+    
+
 
 
         
