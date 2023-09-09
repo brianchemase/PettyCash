@@ -23,7 +23,7 @@ use App\Http\Controllers\TransactionPurposeController;
 
 Route::get('/link', function () {        
        $target = '/home/hilsanco/public_html/PettyCash/PettyCash/storage/app/public';
-       $shortcut = '/home/public_html/PettyCash/PettyCashpublic/storage';
+       $shortcut = '/home/public_html/PettyCash/PettyCash/public/storage';
        symlink($target, $shortcut);
     });
 
