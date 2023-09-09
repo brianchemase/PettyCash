@@ -96,6 +96,7 @@ class TransactionsController extends Controller
                         'staff_id' => 'required',
                         'amount' => 'required|numeric',
                         'purpose' => 'required',
+                        'access_pin' => 'required',
                         'phone_number' => 'required|numeric',
                     ]);
 
@@ -103,13 +104,27 @@ class TransactionsController extends Controller
                     $staff_id = $request->input('staff_id');
                     $amount = $request->input('amount');
                     $purpose = $request->input('purpose');
+                    $access_pin = $request->input('access_pin');
                     $phoneNumber = $request->input('phone_number');
 
-                    $WithdrawalLimit = DB::table('tbl_petty_cash_transactions')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('balance')->first()->balance;
-                    
-                    if ($amount >= $WithdrawalLimit) {
+                    $System_pin = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('access_pin')->first()->access_pin;
+                    // check system pin
+                    if($access_pin != $System_pin)
+                    {
                         return response()->json([
                             'status_code'=> 401,
+                            'message' => "Invalid Transaction Pin",
+                        ]);
+
+                    }
+
+
+
+                    $WithdrawalLimit = DB::table('tbl_petty_cash_transactions')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('balance')->first()->balance;
+                    //check withdrawal limit
+                    if ($amount >= $WithdrawalLimit) {
+                        return response()->json([
+                            'status_code'=> 400,
                             'message' => "Invalid Limit. Current Balance is $WithdrawalLimit",
                         ]);
                     }
@@ -132,11 +147,11 @@ class TransactionsController extends Controller
                     'created_at' => $TransactionDate, 
                 ]);
 
-        $client_fname = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('first_name')->first()->first_name;
-        $phone = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('phone')->first()->phone;
+                    $client_fname = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('first_name')->first()->first_name;
+                    $phone = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('phone')->first()->phone;
 
-        $message="Dear $client_fname,\nYour have succesfully withdrawnn KES $amount for Purpose: $purpose.\nYour New walet balance is KES $newbalance";
-        $Notify = $this->SendNotification($phone, $message);
+                    $message="Dear $client_fname,\nYour have succesfully withdrawnn KES $amount for Purpose: $purpose.\nYour New walet balance is KES $newbalance";
+                    $Notify = $this->SendNotification($phone, $message);
 
 
 

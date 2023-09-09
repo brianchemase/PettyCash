@@ -35,10 +35,8 @@
 												<tr>
 													<td>{{ $transaction->id }}</td>
 													<td>{{ $transaction->staff_id }}</td>
-													<td>{{ $transaction->f_staff_name }} {{ $transaction->l_staff_name }}</td>
-												
-													<td>{{ date('d-m-Y', strtotime($transaction->transaction_date)) }}</td>
-
+													<td>{{ $transaction->f_staff_name }} {{ $transaction->l_staff_name }}</td>												
+													<td>{{ date('d-m-Y H:i:s', strtotime($transaction->transaction_date)) }}</td>
 													<td>{{ $transaction->purpose }}</td>
 													<td>{{ $transaction->description }}</td>
 													<td>{{ $transaction->amount }}</td>

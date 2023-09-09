@@ -32,7 +32,9 @@
 													<td>{{ $transaction->id }}</td>
 													<td>{{ $transaction->staff_id }}</td>
 													<td>{{ $transaction->f_staff_name }} {{ $transaction->l_staff_name }}</td>
-													<td>{{ date('d-m-Y', strtotime($transaction->allocation_date)) }}</td>													
+													
+													<td>{{ date('d-m-Y H:i:s', strtotime($transaction->allocation_date)) }}</td>
+												
 													<td>{{ $transaction->allocated_amount }}</td>												
 													<td>					
 															<span class="badge bg-success">Debit</span>
