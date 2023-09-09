@@ -140,7 +140,7 @@ class TransactionsController extends Controller
                     'staff_id' => $staff_id,
                     'transaction_date' => $TransactionDate,
                     'purpose' => $purpose,
-                    'description' => $purpose,
+                    'description' => $purpose.":".$phoneNumber,
                     'amount' =>  $amount,
                     'balance' => $newbalance,
                     'transaction_type' =>  "withdrawal",
