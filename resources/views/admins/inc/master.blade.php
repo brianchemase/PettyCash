@@ -66,6 +66,37 @@ data-theme="light"
 			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)");
 		});
 	</script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Choices.js
+			new Choices(document.querySelector(".choices-single"));
+			new Choices(document.querySelector(".choices-multiple"));
+			// Flatpickr
+			flatpickr(".flatpickr-minimum");
+			flatpickr(".flatpickr-datetime", {
+				enableTime: true,
+				dateFormat: "Y-m-d H:i",
+			});
+			flatpickr(".flatpickr-human", {
+				altInput: true,
+				altFormat: "F j, Y",
+				dateFormat: "Y-m-d",
+			});
+			flatpickr(".flatpickr-multiple", {
+				mode: "multiple",
+				dateFormat: "Y-m-d"
+			});
+			flatpickr(".flatpickr-range", {
+				mode: "range",
+				dateFormat: "Y-m-d"
+			});
+			flatpickr(".flatpickr-time", {
+				enableTime: true,
+				noCalendar: true,
+				dateFormat: "H:i",
+			});
+		});
+	</script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {

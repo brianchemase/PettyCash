@@ -61,13 +61,10 @@
 										<thead>
 											<tr>
 											<th>Photo</th>
-											<th>First Name</th>
-											<th>Middle Name</th>
-											<th>Last Name</th>
+											<th>Staff Name</th>											
 											<th>Phone</th>
 											<th>Email</th>
-											<th>Gender</th>
-											
+											<th>Gender</th>											
 											<th>Staff ID</th>
 											<th>ID No</th>
 											<th>Account Status</th>
@@ -89,9 +86,8 @@
 													No Photo Available
 													@endif
 												</td>
-													<td>{{ $staff->first_name }}</td>
-													<td>{{ $staff->middle_name }}</td>
-													<td>{{ $staff->last_name }}</td>
+													<td>{{ $staff->first_name }} {{ $staff->middle_name }} {{ $staff->last_name }}</td>
+													
 													<td>{{ $staff->phone }}</td>
 													<td>{{ $staff->email }}</td>
 													<td>{{ $staff->gender }}</td>
@@ -114,7 +110,9 @@
 
 
 													</td>
-													<td> </td>
+													<td> 
+														
+													</td>
 												</tr>
 											@endforeach
 										</tbody>

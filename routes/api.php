@@ -28,3 +28,8 @@ Route::get('/TransactionPurposes', [TransactionPurposeController::class, 'transa
 
 Route::get('/TransactionHistory/{staff_id}', [TransactionsController::class, 'getStaffTransactionHistory']);
 
+Route::get('/WithDrawalLimit/{staff_id}', [TransactionsController::class, 'getStaffWithdrawalLimit']);
+
+//accept payment
+Route::post('/ProcessWithdrawal', [TransactionsController::class, 'processPayment']);
+

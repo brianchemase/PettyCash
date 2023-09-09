@@ -12,7 +12,10 @@ class AllocationsController extends Controller
     public function Fundallocation(Request $request)
     {
 
-        $staffData = DB::table('tbl_staff')->get();
+        $staffData = DB::table('tbl_staff')
+        ->where('account_status', 'active')
+        ->get();
+
 
         //return $clients_list;
         if(isset($_GET['q']))
