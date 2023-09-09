@@ -22,7 +22,9 @@ use App\Http\Controllers\TransactionPurposeController;
 // });
 
 
-Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
+       // Route::group(['prefix' => 'admins'], function () {
+
+        Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
 
         Route::get('/forms', [DashboardController::class, 'dashboardforms'])->name('adminforms');
 
@@ -36,9 +38,16 @@ Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
         //transaction purpose
         Route::get('/RegisterTransactionpurpose', [TransactionPurposeController::class, 'create'])->name('transactionpurposecreate');
         Route::post('/Savetransactionpurpose', [TransactionPurposeController::class, 'RegisterPurpose'])->name('savetransactionpurpose');
+
+        //fund allocation
+        Route::get('/StaffFundAllocation', [AllocationsController::class, 'Fundallocation'])->name('fundallocations');
+        //save fund allocated
+        Route::any('/AllocationFund', [AllocationsController::class, 'allocateFunds'])->name('allocate.funds');
+
+        Route::get('/TransactionsHistory', [TransactionsController::class, 'getTransactionHistory'])->name('TransHistory');
+        
     
-
-
+       // }   );
 
         
 

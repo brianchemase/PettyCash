@@ -15,14 +15,18 @@ class DashboardController extends Controller
     {
 
         $data1="";
+        $AllocatedPettyCash = DB::table('tbl_petty_cash_allocation')->sum('allocated_amount');
 
+        $TotalWithdrawn = DB::table('tbl_petty_cash_transactions')
+        ->where('purpose', '!=', 'topup')
+        ->sum('amount');
 
 
         $paybillno="2839102";
         $paybillBalance="10000";
         $totalDisbusments="256370";
-        $AllocatedPettyCash="175000";
-        $TotalWithdrawn="25604758";
+       // $AllocatedPettyCash="175000";
+        //$TotalWithdrawn="25604758";
 
         $data = [
             'paybillno' => $paybillno,
@@ -90,6 +94,8 @@ class DashboardController extends Controller
 
                 $staff_id="P".$request->input('id_number');
                 $access_pin = str_pad(rand(0, 9999), 4, '0', STR_PAD_LEFT);
+                $fname=$request->input('fname');
+                $phone=$request->input('phone');
                 $inserted =  DB::table('tbl_staff')->insert([
                         'first_name' => $request->input('fname'),
                         'middle_name' => $request->input('mname'),
@@ -108,6 +114,8 @@ class DashboardController extends Controller
 
 
                     if ($inserted) {
+                        $message="Dear $fname,\nYour username is $staff_id and your access code is:$access_pin.\nDont share your access key with anyone.\n#staySecureWithPettyQash";
+                        $Notify = $this->SendNotification($phone, $message);
             
                         return back()->with('success','Your staff data saved successfully!');
                     } else {
@@ -138,5 +146,54 @@ class DashboardController extends Controller
     {
         
         return view('admins.table');
+    }
+
+    public function SendNotification($phone, $message)
+    {
+        // Define the JSON data to send
+        $data = [
+            "phone" => $phone,
+            "message" => $message,
+        ];
+
+            $apikey="6bffdc7405dd019325db9cfe3ec093e0";
+            $shortcode="TextSMS";
+            $partnerID="6712";
+            //$partnerID="04";
+            $serviceId=0;
+
+                $smsdata=array(
+                    "apikey" => $apikey,
+                    "shortcode" => $shortcode,
+                    "partnerID"=> $partnerID,
+                    "mobile" => $phone,
+                    "message" => $message,
+                    //"serviceId" => $serviceId,
+                    //"response_type" => "json",
+                    );
+                    
+                $smsdata_string=json_encode($smsdata);
+                //echo $smsdata_string."\n";
+
+                $smsURL="https://sms.textsms.co.ke/api/services/sendsms/";
+
+                //POST
+                $ch=curl_init($smsURL);
+                curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"POST");
+                curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,0);
+                curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,0);
+                curl_setopt($ch,CURLOPT_POSTFIELDS,$smsdata_string);
+                curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+                curl_setopt($ch,CURLOPT_HTTPHEADER,array(
+                    'Content-Type: application/json',
+                    'Content-Length: '.strlen($smsdata_string)
+                    )	
+                );
+                $response=curl_exec($ch);
+                $err = curl_error($ch);
+                curl_close($ch);
+
+        // Output the response from the endpoint
+       // return "Response: " . $response;
     }
 }

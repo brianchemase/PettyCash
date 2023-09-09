@@ -1,8 +1,8 @@
 <nav id="sidebar" class="sidebar js-sidebar">
     <div class="sidebar-content js-simplebar">
         <a class="sidebar-brand" href="{{ route('admindash') }}">
-            <!-- <img src="{{ asset('logo/sisdologo.png') }}" alt="Ndururumo" width="50" height="60"> -->
-            <span class="align-middle" style="color: orange;">PettyCash SYSTEM </span>
+            <img src="{{ asset('logo/pettyQashLogo.png') }}" alt="PettyQash" width="210" height="60">
+            <!-- <span class="align-middle" style="color: orange;">PettyCash SYSTEM </span> -->
         </a>
         <ul class="sidebar-nav">
             <li class="sidebar-header">
@@ -33,7 +33,7 @@
 
 
             <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
+                <a class="sidebar-link" href="{{ route('fundallocations') }}">
                     <i class="align-middle"data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Funding Allocation</span>
                 </a>
             </li>
@@ -53,8 +53,8 @@
                 Reports
             </li>
             <li class="sidebar-item">
-                <a class="sidebar-link" href="{{ route('admindash') }}">
-                    <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Billing</span>
+                <a class="sidebar-link" href="{{ route('TransHistory') }}">
+                    <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Transaction History</span>
                 </a>
             </li>
 
