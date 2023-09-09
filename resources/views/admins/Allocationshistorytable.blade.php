@@ -20,12 +20,9 @@
 											<th>ID</th>
 											<th>Staff ID</th>
 											<th>Staff Names</th>
-											<th>Transaction Date</th>
-											<th>Purpose</th>
-											<th>Description</th>
-											<th>Amount</th>
-											<th>Balance</th>
-											<th>Transaction Type</th>
+											<th>Transaction Date</th>											
+											<th>Amount</th>											
+											
 											<th>Type</th>
 											
 										</tr>
@@ -36,20 +33,10 @@
 													<td>{{ $transaction->id }}</td>
 													<td>{{ $transaction->staff_id }}</td>
 													<td>{{ $transaction->f_staff_name }} {{ $transaction->l_staff_name }}</td>
-												
-													<td>{{ date('d-m-Y', strtotime($transaction->transaction_date)) }}</td>
-
-													<td>{{ $transaction->purpose }}</td>
-													<td>{{ $transaction->description }}</td>
-													<td>{{ $transaction->amount }}</td>
-													<td>{{ $transaction->balance }}</td>
-													<td>{{ $transaction->transaction_type }}</td>
-													<td>
-														@if ($transaction->transaction_type !== 'top-up')
+													<td>{{ date('d-m-Y', strtotime($transaction->allocation_date)) }}</td>													
+													<td>{{ $transaction->allocated_amount }}</td>												
+													<td>					
 															<span class="badge bg-success">Debit</span>
-														@else
-															<span class="badge bg-danger">Credit</span>
-														@endif
 													</td>
 													
 												</tr>

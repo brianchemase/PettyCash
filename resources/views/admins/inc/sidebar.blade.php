@@ -37,17 +37,7 @@
                     <i class="align-middle"data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Funding Allocation</span>
                 </a>
             </li>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="airplay" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Manage permissions</span>
-                </a>
-            </li>
-
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="#">
-                    <i class="align-middle" data-feather="airplay" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Manage Categories</span>
-                </a>
-            </li>
+           
 
             <li class="sidebar-header">
                 Reports
@@ -55,6 +45,11 @@
             <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('TransHistory') }}">
                     <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Transaction History</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="{{ route('AllocationHistory') }}">
+                    <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Allocation History</span>
                 </a>
             </li>
 

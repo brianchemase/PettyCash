@@ -44,6 +44,8 @@ use App\Http\Controllers\TransactionPurposeController;
         //save fund allocated
         Route::any('/AllocationFund', [AllocationsController::class, 'allocateFunds'])->name('allocate.funds');
 
+        Route::any('/AllocationFundHistory', [AllocationsController::class, 'getAllocationHistory'])->name('AllocationHistory');
+
         Route::get('/TransactionsHistory', [TransactionsController::class, 'getTransactionHistory'])->name('TransHistory');
         
     
