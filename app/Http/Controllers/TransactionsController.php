@@ -132,7 +132,11 @@ class TransactionsController extends Controller
                     'created_at' => $TransactionDate, 
                 ]);
 
+        $client_fname = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('first_name')->first()->first_name;
+        $phone = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('phone')->first()->phone;
 
+        $message="Dear $client_fname,\nYour have succesfully withdrawnn KES $amount for Purpose: $purpose.\nYour New walet balance is KES $newbalance";
+        $Notify = $this->SendNotification($phone, $message);
 
 
 
@@ -145,4 +149,53 @@ class TransactionsController extends Controller
                         'NewBalance' => $newbalance,
                     ]);
                 }
+
+            public function SendNotification($phone, $message)
+            {
+                // Define the JSON data to send
+                $data = [
+                    "phone" => $phone,
+                    "message" => $message,
+                ];
+
+                    $apikey="6bffdc7405dd019325db9cfe3ec093e0";
+                    $shortcode="TextSMS";
+                    $partnerID="6712";
+                    //$partnerID="04";
+                    $serviceId=0;
+
+                        $smsdata=array(
+                            "apikey" => $apikey,
+                            "shortcode" => $shortcode,
+                            "partnerID"=> $partnerID,
+                            "mobile" => $phone,
+                            "message" => $message,
+                            //"serviceId" => $serviceId,
+                            //"response_type" => "json",
+                            );
+                            
+                        $smsdata_string=json_encode($smsdata);
+                        //echo $smsdata_string."\n";
+
+                        $smsURL="https://sms.textsms.co.ke/api/services/sendsms/";
+
+                        //POST
+                        $ch=curl_init($smsURL);
+                        curl_setopt($ch,CURLOPT_CUSTOMREQUEST,"POST");
+                        curl_setopt($ch,CURLOPT_SSL_VERIFYHOST,0);
+                        curl_setopt($ch,CURLOPT_SSL_VERIFYPEER,0);
+                        curl_setopt($ch,CURLOPT_POSTFIELDS,$smsdata_string);
+                        curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+                        curl_setopt($ch,CURLOPT_HTTPHEADER,array(
+                            'Content-Type: application/json',
+                            'Content-Length: '.strlen($smsdata_string)
+                            )	
+                        );
+                        $response=curl_exec($ch);
+                        $err = curl_error($ch);
+                        curl_close($ch);
+
+                // Output the response from the endpoint
+            // return "Response: " . $response;
+            }
 }
