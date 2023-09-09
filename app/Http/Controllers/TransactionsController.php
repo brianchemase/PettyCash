@@ -118,8 +118,6 @@ class TransactionsController extends Controller
 
                     }
 
-
-
                     $WithdrawalLimit = DB::table('tbl_petty_cash_transactions')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('balance')->first()->balance;
                     //check withdrawal limit
                     if ($amount >= $WithdrawalLimit) {
@@ -133,9 +131,7 @@ class TransactionsController extends Controller
 
                     $newbalance=$WithdrawalLimit-$amount;
                     $TransactionDate = Carbon::now();
-
-
-                    //update transation history
+                //update transation history
                 $insertTransaction = DB::table('tbl_petty_cash_transactions')->insert([
                     'staff_id' => $staff_id,
                     'transaction_date' => $TransactionDate,
@@ -152,9 +148,6 @@ class TransactionsController extends Controller
 
                     $message="Dear $client_fname,\nYour have succesfully withdrawnn KES $amount for Purpose: $purpose.\nYour New walet balance is KES $newbalance";
                     $Notify = $this->SendNotification($phone, $message);
-
-
-
                     // Return a response
                     return response()->json([
                         'status_code'=> 200,
