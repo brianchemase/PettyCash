@@ -23,6 +23,13 @@ class AuthController extends Controller
             ->where('access_pin', $request->input('access_pin'))
             ->first();
 
+            $fullImage="https://pettyqash.hilsan.co.ke/storage/ppt/".$user->ppt_photo;
+
+           // $fullImage = 'full_image_url_or_path.jpg'; // Replace with the actual URL or path
+
+            // Add the 'full_image' key to the $user object
+            $user->full_image = $fullImage;
+
             if ($user && $user->account_status === 'active') {
                 // Authentication success
                 return response()->json(['statuscode' => '200', 'message' => 'Authentication successful', 'StaffData' => $user]);
