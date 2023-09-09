@@ -19,13 +19,15 @@
 	<!-- <link href="css/app.css" rel="stylesheet"> -->
     <link href="{{asset('admins/css/app.css')}}" rel="stylesheet">
 	<!-- BEGIN SETTINGS -->
-	<script src="js/settings.js"></script>
+	<!-- <script src="js/settings.js"></script> -->
 	<!-- BEGIN SETTINGS -->
-	<script src="{{asset('admins/js/settings.js')}}"></script>
+	<!-- <script src="{{asset('admins/js/settings.js')}}"></script> -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body 
+data-theme="light"
+>
 	<div class="wrapper">
 
         <!-- side bar start -->

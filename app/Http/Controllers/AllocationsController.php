@@ -121,7 +121,7 @@ class AllocationsController extends Controller
 
     public function getAllocationHistory()
     {
-                $transactionHistory = DB::table('tbl_petty_cash_allocation')
+                $allocationHistory = DB::table('tbl_petty_cash_allocation')
                 ->select(
                     'tbl_petty_cash_allocation.*', // Select all columns from tbl_petty_cash_transactions
                     'tbl_staff.first_name as f_staff_name', // Select the staff name from tbl_staff and alias it as staff_name
@@ -132,12 +132,8 @@ class AllocationsController extends Controller
                 ->get();
 
 
-                
-
-         //return $transactionHistory;
-
             $data = [
-                'transactionHistory' => $transactionHistory,
+                'allocationHistory' => $allocationHistory,
                 
               
             ];

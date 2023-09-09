@@ -9,7 +9,7 @@
                 Service Tabs
             </li>
 
-            <li class="sidebar-item active" style="color: orange;">
+            <li class="sidebar-item {{ Route::currentRouteName() === 'admindash' ? 'active' : '' }}" style="color: orange;">
                 <a class="sidebar-link" href="{{ route('admindash') }}">
                     <i class="align-middle" data-feather="sliders" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Dashboard</span>
                 </a>
@@ -20,7 +20,7 @@
             </li>
 
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Route::currentRouteName() === 'managestaff' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('managestaff') }}">
                     <i class="align-middle"data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Manage Staff</span>
                 </a>
@@ -32,7 +32,7 @@
             </li>
 
 
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Route::currentRouteName() === 'fundallocations' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('fundallocations') }}">
                     <i class="align-middle"data-feather="user" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Funding Allocation</span>
                 </a>
@@ -42,12 +42,12 @@
             <li class="sidebar-header">
                 Reports
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Route::currentRouteName() === 'TransHistory' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('TransHistory') }}">
                     <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Transaction History</span>
                 </a>
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Route::currentRouteName() === 'AllocationHistory' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('AllocationHistory') }}">
                     <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Allocation History</span>
                 </a>
@@ -56,7 +56,7 @@
             <li class="sidebar-header">
                 Settings
             </li>
-            <li class="sidebar-item">
+            <li class="sidebar-item {{ Route::currentRouteName() === 'transactionpurposecreate' ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ route('transactionpurposecreate') }}">
                     <i class="align-middle" data-feather="grid" style="color: orange;"></i> <span class="align-middle" style="color: orange;">Transaction Purpose</span>
                 </a>

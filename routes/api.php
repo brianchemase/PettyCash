@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TransactionPurposeController;
+use App\Http\Controllers\TransactionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,4 +25,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/Authenticate', [AuthController::class, 'login']);
 
 Route::get('/TransactionPurposes', [TransactionPurposeController::class, 'transactionsRegistered']);
+
+Route::get('/TransactionHistory/{staff_id}', [TransactionsController::class, 'getStaffTransactionHistory']);
 

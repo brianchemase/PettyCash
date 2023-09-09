@@ -10,10 +10,10 @@
 
 					<div class="card">
 								<div class="card-header">
-									<h5 class="card-title">Transactions History</h5>
+									<h5 class="card-title">Allocation History</h5>
 								</div>
 								<div class="card-body">
-								@if (!empty($transactionHistory))
+								@if (!empty($allocationHistory))
 									<table id="datatables-buttons" class="table table-striped" style="width:100%">
 									<thead>
 										<tr>
@@ -21,14 +21,13 @@
 											<th>Staff ID</th>
 											<th>Staff Names</th>
 											<th>Transaction Date</th>											
-											<th>Amount</th>											
-											
+											<th>Amount</th>								
 											<th>Type</th>
 											
 										</tr>
 									</thead>
 									<tbody>
-											@foreach ($transactionHistory as $transaction)
+											@foreach ($allocationHistory as $transaction)
 												<tr>
 													<td>{{ $transaction->id }}</td>
 													<td>{{ $transaction->staff_id }}</td>
@@ -44,7 +43,7 @@
 										</tbody>
 									</table>
 									@else
-									<p>No transaction data available.</p>
+									<p>No Allocation data available.</p>
 								@endif
 									
 								</div>
