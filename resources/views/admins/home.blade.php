@@ -150,6 +150,7 @@
 								</div>
                                 <script>
                                     document.addEventListener("DOMContentLoaded", function() {
+                                        var chartData = @json(array_values($monthlyData));
                                         // Bar chart
                                         new Chart(document.getElementById("chartjs-dashboard-bar"), {
                                             type: "bar",
@@ -161,8 +162,8 @@
                                                     borderColor: window.theme.warning,
                                                     hoverBackgroundColor: window.theme.warning,
                                                     hoverBorderColor: window.theme.warning,
-                                                    data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-                                                    barPercentage: .75,
+                                                    data: chartData,
+                                                    barPercentage: .85,
                                                     categoryPercentage: .5
                                                 }]
                                             },

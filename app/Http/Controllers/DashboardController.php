@@ -28,13 +28,34 @@ class DashboardController extends Controller
        // $AllocatedPettyCash="175000";
         //$TotalWithdrawn="25604758";
 
+         // Fetch transaction data for each month of the year
+        $transactionData = DB::table('tbl_petty_cash_transactions')
+        ->select(DB::raw('MONTH(transaction_date) as month'), DB::raw('SUM(amount) as total_amount'))
+        ->where('transaction_type', '!=', 'top-up') // Add this condition
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get();
+
+        // Create an array to store monthly data
+        $monthlyData = [];
+
+        // Initialize the monthly data array with zeros for all months
+        for ($i = 1; $i <= 12; $i++) {
+            $monthlyData[$i] = 0;
+        }
+
+        // Populate the monthly data with transaction data
+        foreach ($transactionData as $data) {
+            $monthlyData[$data->month] = $data->total_amount;
+        }
+
         $data = [
             'paybillno' => $paybillno,
             'paybillBalance' => $paybillBalance,
             'totalDisbusments' => $totalDisbusments,
             'AllocatedPettyCash' => $AllocatedPettyCash,
             'TotalWithdrawn' => $TotalWithdrawn,
-            'data4' => $data1,
+            'monthlyData' => $monthlyData,
             'data4' => $data1,
             'data4' => $data1,
             'data4' => $data1,
