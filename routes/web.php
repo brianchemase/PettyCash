@@ -21,6 +21,12 @@ use App\Http\Controllers\TransactionPurposeController;
 //     return view('welcome');
 // });
 
+Route::get('/link', function () {        
+       $target = '/home/hilsanco/public_html/PettyCash/PettyCash/storage/app/public';
+       $shortcut = '/home/public_html/PettyCash/PettyCashpublic/storage';
+       symlink($target, $shortcut);
+    });
+
 
        // Route::group(['prefix' => 'admins'], function () {
 
