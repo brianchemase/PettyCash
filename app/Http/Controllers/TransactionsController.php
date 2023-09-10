@@ -44,7 +44,24 @@ class TransactionsController extends Controller
                     ->orderBy('tbl_petty_cash_transactions.transaction_date', 'desc')
                     ->get();
 
-                return response()->json($transactionHistory);
+                    if ($transactionHistory){
+
+                        return response()->json([
+                            'status_code'=> 200,
+                            'message' => "Staff Transaction available",
+                            'transactionHistory' => $transactionHistory
+                        ]);
+                    }
+                    else
+                    {
+                        return response()->json([
+                            'status_code'=> 404,
+                            'message' => "Staff Transaction not available",
+                        ]);
+                    }
+
+               // return response()->json($transactionHistory);
+               
             }
 
             public function getStaffWithdrawalLimit($staff_id)
@@ -68,23 +85,41 @@ class TransactionsController extends Controller
                         // Staff is not active
                         // Perform actions for non-active staff
                         $WithdrawalLimit ="0";
-                        return response()->json(['withdrawal_limit' => $WithdrawalLimit, 'error' => 'Withdrawal Not possible, Account Inactive'], 404);
+                        //return response()->json(['withdrawal_limit' => $WithdrawalLimit, 'error' => 'Withdrawal Not possible, Account Inactive'], 404);
+                        return response()->json([
+                            'status_code'=> 401,
+                            'message' => "Withdrawal Not possible, Account Inactive",
+                            'withdrawal_limit' => $WithdrawalLimit
+                        ]);
                     }
                 } else {
                     // Staff not found
                     // Handle the case where the staff_id does not exist
                     $WithdrawalLimit ="0";
-                    return response()->json(['withdrawal_limit' => $WithdrawalLimit, 'error' => 'Withdrawal Not possible, Account Inactive'], 404);
+                   // return response()->json(['withdrawal_limit' => $WithdrawalLimit, 'error' => 'Withdrawal Not possible, Account Inactive'], 404);
+                    return response()->json([
+                        'status_code'=> 401,
+                        'message' => "Withdrawal Not possible, Account Inactive",
+                        'withdrawal_limit' => $WithdrawalLimit
+                    ]);
                 }
 
-
-                //return $WithdrawalLimit;
                 if ($WithdrawalLimit) {
                     // If a withdrawal limit is found, return it in JSON response
-                    return response()->json(['withdrawal_limit' => $WithdrawalLimit]);
+                   
+                    return response()->json([
+                        'status_code'=> 200,
+                        'message' => "Withdrawal limit found",
+                        'withdrawal_limit' => $WithdrawalLimit
+                    ]);
                 } else {
                     // If no withdrawal limit is found, return an appropriate JSON response
-                    return response()->json(['error' => 'Withdrawal limit not found', 'withdrawal_limit' => $WithdrawalLimit], 404);
+                   
+                    return response()->json([
+                        'status_code'=> 404,
+                        'message' => "Withdrawal limit not found",
+                        'withdrawal_limit' => $WithdrawalLimit
+                    ]);
                 }
 
             }

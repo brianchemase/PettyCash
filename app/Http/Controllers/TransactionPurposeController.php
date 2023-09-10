@@ -60,7 +60,7 @@ class TransactionPurposeController extends Controller
 
             // return response()->json($transactionPurposes);
         return response()->json(
-            ['statuscode' => '200', 
+            ['status_code' => '200', 
             'message' => 'Authentication successful', 
             'transactions' => $transactionPurposes
             ]);
@@ -68,7 +68,7 @@ class TransactionPurposeController extends Controller
         }
         else {
             return response()->json(
-                ['statuscode' => '404', 
+                ['status_code' => '404', 
                 'message' => 'An Error has happened'
                 ]);
 
