@@ -61,7 +61,7 @@ class TransactionPurposeController extends Controller
             // return response()->json($transactionPurposes);
         return response()->json(
             ['status_code' => '200', 
-            'message' => 'Authentication successful', 
+            'message' => 'Transaction Purpose Available', 
             'transactions' => $transactionPurposes
             ]);
 
