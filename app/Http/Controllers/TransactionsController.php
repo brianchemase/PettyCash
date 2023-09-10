@@ -131,17 +131,17 @@ class TransactionsController extends Controller
 
                     $newbalance=$WithdrawalLimit-$amount;
                     $TransactionDate = Carbon::now();
-                //update transation history
-                $insertTransaction = DB::table('tbl_petty_cash_transactions')->insert([
-                    'staff_id' => $staff_id,
-                    'transaction_date' => $TransactionDate,
-                    'purpose' => $purpose,
-                    'description' => $purpose.":".$phoneNumber,
-                    'amount' =>  $amount,
-                    'balance' => $newbalance,
-                    'transaction_type' =>  "withdrawal",
-                    'created_at' => $TransactionDate, 
-                ]);
+                    //update transation history
+                    $insertTransaction = DB::table('tbl_petty_cash_transactions')->insert([
+                        'staff_id' => $staff_id,
+                        'transaction_date' => $TransactionDate,
+                        'purpose' => $purpose,
+                        'description' => $purpose.":".$phoneNumber,
+                        'amount' =>  $amount,
+                        'balance' => $newbalance,
+                        'transaction_type' =>  "withdrawal",
+                        'created_at' => $TransactionDate, 
+                    ]);
 
                     $client_fname = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('first_name')->first()->first_name;
                     $phone = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staff_id)->select('phone')->first()->phone;

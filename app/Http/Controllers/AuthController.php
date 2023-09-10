@@ -23,16 +23,30 @@ class AuthController extends Controller
             ->where('access_pin', $request->input('access_pin'))
             ->first();
 
-            $fullImage="https://pettyqash.hilsan.co.ke/storage/ppt/".$user->ppt_photo;
+        $fullImage="https://pettyqash.hilsan.co.ke/storage/ppt/".$user->ppt_photo;
 
-           // $fullImage = 'full_image_url_or_path.jpg'; // Replace with the actual URL or path
 
-            // Add the 'full_image' key to the $user object
-            $user->full_image = $fullImage;
+
+        // Add the 'full_image' key to the $user object
+        $user->full_image = $fullImage;
 
             if ($user && $user->account_status === 'active') {
+
+                $filteredUserData = [
+                    'id' => $user->id,
+                    'first_name' => $user->first_name,
+                    'middle_name' => $user->middle_name,
+                    'last_name' => $user->last_name,
+                    'phone' => $user->phone,
+                    'email' => $user->email,
+                    'gender' => $user->gender,
+                    'staff_id' => $user->staff_id,
+                    'id_no' => $user->id_no,
+                    'account_status' => $user->account_status,
+                    'full_image' => $fullImage,
+                ];
                 // Authentication success
-                return response()->json(['statuscode' => '200', 'message' => 'Authentication successful', 'StaffData' => $user]);
+                return response()->json(['statuscode' => '200', 'message' => 'Authentication successful', 'StaffData' => $filteredUserData]);
             } else {
                 // Authentication failed or account is not active
                 return response()->json(['statuscode' => '401', 'message' => $user ? 'Account is not active' : 'Authentication failed. Confirm your credentials'], 401);
