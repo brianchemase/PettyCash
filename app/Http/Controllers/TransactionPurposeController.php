@@ -56,7 +56,23 @@ class TransactionPurposeController extends Controller
         ->where('status', 'active')
         ->get();
     
+        if ($transactionPurposes){
 
-        return response()->json($transactionPurposes);
+            // return response()->json($transactionPurposes);
+        return response()->json(
+            ['statuscode' => '200', 
+            'message' => 'Authentication successful', 
+            'transactions' => $transactionPurposes
+            ]);
+
+        }
+        else {
+            return response()->json(
+                ['statuscode' => '404', 
+                'message' => 'An Error has happened'
+                ]);
+
+        }
+       
     }
 }
