@@ -46,10 +46,10 @@ class AuthController extends Controller
                     'full_image' => $fullImage,
                 ];
                 // Authentication success
-                return response()->json(['statuscode' => '200', 'message' => 'Authentication successful', 'StaffData' => $filteredUserData]);
+                return response()->json(['status_code' => '200', 'message' => 'Authentication successful', 'StaffData' => $filteredUserData]);
             } else {
                 // Authentication failed or account is not active
-                return response()->json(['statuscode' => '401', 'message' => $user ? 'Account is not active' : 'Authentication failed. Confirm your credentials'], 401);
+                return response()->json(['status_code' => '401', 'message' => $user ? 'Account is not active' : 'Authentication failed. Confirm your credentials'], 401);
             }
     }
 }
