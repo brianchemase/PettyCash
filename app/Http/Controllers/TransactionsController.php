@@ -206,4 +206,36 @@ class TransactionsController extends Controller
                 // Output the response from the endpoint
             // return "Response: " . $response;
             }
+
+            public function MakeWalettWithdrawal($ToAccount, $transAmount, $purpose)
+            {
+                // Your credentials
+                $credentials = [
+                    'token' => '<YOUR-SECRET-TOKEN-HERE>',
+                    'publishable_key' => '<YOUR-PUBLISHABLE_KEY-HERE>',
+                ];
+
+                // Define the transactions
+                $transactions = [
+                    'account' => $ToAccount, 
+                    'amount' => $transAmount, 
+                    'narrative' => $purpose,
+                    
+                ];
+
+                // Initialize the Transfer instance
+                $transfer = new Transfer();
+                $transfer->init($credentials);
+
+                // Perform the MPesa transfer
+                $response = $transfer->mpesa("KES", $transactions);
+
+                // Call the approve method for approving the last transaction
+                $response = $transfer->approve($response);
+
+                // Check or track the transfer status
+                $response = $transfer->status($response->tracking_id);
+
+                return response()->json($response);
+            }
 }
