@@ -183,6 +183,12 @@ class TransactionsController extends Controller
 
                     $message="Dear $client_fname,\nYour have succesfully withdrawnn KES $amount for Purpose: $purpose.\nYour New walet balance is KES $newbalance";
                     $Notify = $this->SendNotification($phone, $message);
+                    $logsms=DB::table('tbl_sms_logs')->insert([
+                        'names' => $client_fname,  // Replace with the recipient's name
+                        'phone' => $phone, // Replace with the recipient's phone number
+                        'message' => $message, // Replace with the SMS content
+                        'sent_at' => now(), // Use the current timestamp
+                    ]);
                     // Return a response
                     return response()->json([
                         'status_code'=> 200,
