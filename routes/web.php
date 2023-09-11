@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\AllocationsController;
 use App\Http\Controllers\TransactionPurposeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,15 +18,25 @@ use App\Http\Controllers\TransactionPurposeController;
 |
 */
 
+
+Route::get('/link', function () {        
+   $target = '/home/hilsanco/public_html/PettyCash/PettyCash/storage/app/public';
+   $shortcut = '/home/hilsanco/public_html/PettyCash/PettyCash/public/storage';
+   symlink($target, $shortcut);
+});
+
+
+Route::get('/AuthLogin', [AuthController::class, 'DashboardLogin'])->name('AuthLogPage');
+Route::post('/Authcheck',[AuthController::class, 'checkadmin'])->name('auth.admin.check');
+Route::get('/Authlogout',[AuthController::class, 'adminlogout'])->name('auth.admin.logout');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/link', function () {        
-       $target = '/home/hilsanco/public_html/PettyCash/PettyCash/storage/app/public';
-       $shortcut = '/home/hilsanco/public_html/PettyCash/PettyCash/public/storage';
-       symlink($target, $shortcut);
-    });
+Route::group(['prefix' => 'admin','middleware' => ['AuthCheckAdmins']], function() {});
+
+
 
 
        // Route::group(['prefix' => 'admins'], function () {

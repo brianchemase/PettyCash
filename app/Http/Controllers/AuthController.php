@@ -50,4 +50,91 @@ class AuthController extends Controller
                 return response()->json(['status_code' => '401', 'message' => $user ? 'Account is not active' : 'Authentication failed. Confirm your credentials'], 401);
             }
     }
+
+    public function DashboardLogin()
+    {
+
+
+
+        return view('auth.login');
+    }
+
+    public function checkadmin(Request $request)
+    {
+
+        //Validate requests
+        $request->validate([
+            'email'=>'required',
+            'password'=>'required|min:5|max:12'
+       ]);
+
+       //$userInfo = Admin::where('email','=', $request->email)->first();
+      // $userInfo = AdminsData::where('email','=', $request->email)->first();
+       $userInfo = DB::table('users')
+        ->where('email', '=', $request->email)
+        ->first();
+
+       if(!$userInfo){
+           return back()->with('fail','We do not recognize your email. Contact Admin for Support');
+            }else
+        {
+           //check password
+               $hashedpassword=hash("sha256", $request->password);
+               //if($hashedpassword == $userInfo->password){
+                if($request->password == $userInfo->password){
+                   $request->session()->put('AdminLoggedUser', $userInfo->id);
+
+            //        $logdata=AdminsData::where('id','=', session('AdminLoggedUser'))->first();
+            //        $fname=$logdata->firstname;
+            //        $lname=$logdata->lastname;
+            //        $usernames=$fname.' '.$lname;
+            //        $station='ADMIN';
+            //        $remarks="has logged in the laravel system at ";
+            //        $mda="ADMIN"; 
+
+                        // if (!empty($_SERVER["HTTP_CLIENT_IP"]))
+                        //    {
+                        //     $ip = $_SERVER["HTTP_CLIENT_IP"];
+                        //    }
+                        //    elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"]))
+                        //    {
+                        //     $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+                        //    }
+                        //    else
+                        //    {
+                        //     $ip = $_SERVER["REMOTE_ADDR"];
+                        //    } 
+               
+            //    $logs= new HistoryLog;
+            //    $logs->staff_id=$usernames; 
+            //    $logs->station= $station;
+            //    $logs->MDA=$mda;
+            //    $logs->action= $remarks;
+            //    $logs->date=$date = date("Y-m-d H:i:s");
+            //    $logs->ip=$ip;
+            //    $save = $logs->save();
+
+              // return redirect('admin/dashboard');
+               return redirect()->route('admindash');
+
+            
+        }else{
+            return back()->with('fail','Incorrect password');
+        }
+        }
+    }
+
+
+                public function adminlogout ()
+                {
+
+                    if(session()->has('AdminLoggedUser')){
+                        session()->pull('AdminLoggedUser');
+                        //return redirect('/admin-login');
+                        return redirect()->route('AuthLogPage');
+
+                    }
+
+                    
+                }
 }
