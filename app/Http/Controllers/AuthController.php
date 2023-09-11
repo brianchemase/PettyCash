@@ -124,7 +124,7 @@ class AuthController extends Controller
         }
     }
 
-
+        //https://www.youtube.com/watch?v=T9q1uT2BEZI
                 public function adminlogout ()
                 {
 
