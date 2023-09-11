@@ -111,6 +111,12 @@ class AllocationsController extends Controller
 
         $message="Dear $client_fname,\nYour account has been debited with KES $allocated.\nYour New walet balance is KES $amountToAllocate";
         $Notify = $this->SendNotification($phone, $message);
+            $logsms=DB::table('tbl_sms_logs')->insert([
+                'names' => $client_fname,  // Replace with the recipient's name
+                'phone' => $phone, // Replace with the recipient's phone number
+                'message' => $message, // Replace with the SMS content
+                'sent_at' => now(), // Use the current timestamp
+            ]);
 
 
             if ($insertResult) {

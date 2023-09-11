@@ -137,7 +137,13 @@ class DashboardController extends Controller
                     if ($inserted) {
                         $message="Dear $fname,\nYour username is $staff_id and your access code is:$access_pin.\nDont share your access key with anyone.\n#staySecureWithPettyQash";
                         $Notify = $this->SendNotification($phone, $message);
-            
+                            $logsms=DB::table('tbl_sms_logs')->insert([
+                                'names' => $fname,  // Replace with the recipient's name
+                                'phone' => $phone, // Replace with the recipient's phone number
+                                'message' => $message, // Replace with the SMS content
+                                'sent_at' => now(), // Use the current timestamp
+                            ]);
+                
                         return back()->with('success','Your staff data saved successfully!');
                     } else {
                        
