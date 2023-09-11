@@ -146,7 +146,7 @@ class AllocationsController extends Controller
            
     }
 
-    public function SendNotification1($phone, $message)
+    public function SendNotification($phone, $message)
     {
         // Define the JSON data to send
         $data = [
@@ -195,7 +195,7 @@ class AllocationsController extends Controller
        // return "Response: " . $response;
     }
 
-    private function SendNotification(string $phone, string $message)
+    private function SendNotification1(string $phone, string $message)
     {
         // Replace these with your actual credentials
         $apiKey = '4e3f3b621a7b0aabb13f1691729e83f0eff6ab05dbaa6173f46d9cc7f6d56dc5';
