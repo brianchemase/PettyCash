@@ -109,7 +109,7 @@ class AllocationsController extends Controller
         $client_fname = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staffId)->select('first_name')->first()->first_name;
         $phone = DB::table('tbl_staff')->orderBy('id', 'desc')->where('staff_id', $staffId)->select('phone')->first()->phone;
 
-        $message="Dear $client_fname,\nYour account has been credited with KES $allocated.\nYour New walet balance is KES $amountToAllocate";
+        $message="Dear $client_fname,\nYour account has been debited with KES $allocated.\nYour New walet balance is KES $amountToAllocate";
         $Notify = $this->SendNotification($phone, $message);
 
 
