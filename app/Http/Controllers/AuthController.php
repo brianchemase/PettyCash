@@ -25,8 +25,6 @@ class AuthController extends Controller
 
         $fullImage="https://pettyqash.hilsan.co.ke/storage/ppt/".$user->ppt_photo;
 
-
-
         // Add the 'full_image' key to the $user object
         $user->full_image = $fullImage;
 
