@@ -2,7 +2,6 @@
 <html lang="en">
 
 
-<!-- Mirrored from demo.adminkit.io/pages-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Nov 2020 06:28:28 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	<meta charset="utf-8">
@@ -126,6 +125,4 @@
   });
 </script></body>
 
-
-<!-- Mirrored from demo.adminkit.io/pages-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Nov 2020 06:28:28 GMT -->
 </html>
