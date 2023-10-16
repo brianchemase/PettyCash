@@ -6,6 +6,7 @@ use App\Http\Controllers\TransactionsController;
 use App\Http\Controllers\AllocationsController;
 use App\Http\Controllers\TransactionPurposeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReportingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +65,10 @@ Route::group(['prefix' => 'admin','middleware' => ['AuthCheckAdmins']], function
         Route::any('/AllocationFundHistory', [AllocationsController::class, 'getAllocationHistory'])->name('AllocationHistory');
 
         Route::get('/TransactionsHistory', [TransactionsController::class, 'getTransactionHistory'])->name('TransHistory');
+
+        Route::get('/TransactionsHistory/{staffId}', [ReportingController::class, 'StaffTransactionReport'])->name('staffTransHistory');
         
+        Route::get('/FullTransactionsHistory', [ReportingController::class, 'transactionsReport'])->name('fullTransHistory');
     
        // }   );
 

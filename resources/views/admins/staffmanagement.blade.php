@@ -111,6 +111,7 @@
 
 													</td>
 													<td> 
+														<a href="{{ route('staffTransHistory', ['staffId' => $staff->staff_id]) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
 														
 													</td>
 												</tr>
