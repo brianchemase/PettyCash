@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PDF;
+//use PDF;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 class ReportingController extends Controller
 {
     //

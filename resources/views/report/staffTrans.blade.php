@@ -28,6 +28,7 @@
         <th>Staff ID</th>
         <th>Purpose</th>
         <th>Amount</th>
+        <th>Balance</th>
         <th>Trans Type</th>
         <th>Transaction Date</th>
         
@@ -39,6 +40,7 @@
         <td>{{ $data->staff_id }}</td>
         <td>{{ $data->purpose }}</td>
         <td>{{ $data->amount }}</td>
+        <td>{{ $data->balance }}</td>
         <td style="color: {{ $data->transaction_type === 'top-up' ? 'green' : 'red' }}">
             {{ $data->transaction_type }}
         </td>
