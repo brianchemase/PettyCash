@@ -44,32 +44,7 @@ Route::group(['prefix' => 'admin','middleware' => ['AuthCheckAdmins']], function
 
         Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
 
-        Route::get('/forms', [DashboardController::class, 'dashboardforms'])->name('adminforms');
-
-        Route::get('/blank', [DashboardController::class, 'blankpage'])->name('blankpage');
-
-        Route::get('/table', [DashboardController::class, 'tablepage'])->name('tablepage');
-        Route::get('/StaffManagement', [DashboardController::class, 'managestaff'])->name('managestaff');
-
-        Route::post('/RegisterStaff', [DashboardController::class, 'registerStaff'])->name('savestaffdata');
-
-        //transaction purpose
-        Route::get('/RegisterTransactionpurpose', [TransactionPurposeController::class, 'create'])->name('transactionpurposecreate');
-        Route::post('/Savetransactionpurpose', [TransactionPurposeController::class, 'RegisterPurpose'])->name('savetransactionpurpose');
-
-        //fund allocation
-        Route::get('/StaffFundAllocation', [AllocationsController::class, 'Fundallocation'])->name('fundallocations');
-        //save fund allocated
-        Route::any('/AllocationFund', [AllocationsController::class, 'allocateFunds'])->name('allocate.funds');
-
-        Route::any('/AllocationFundHistory', [AllocationsController::class, 'getAllocationHistory'])->name('AllocationHistory');
-
-        Route::get('/TransactionsHistory', [TransactionsController::class, 'getTransactionHistory'])->name('TransHistory');
-
-        Route::get('/TransactionsHistory/{staffId}', [ReportingController::class, 'StaffTransactionReport'])->name('staffTransHistory');
-        
-        Route::get('/FullTransactionsHistory', [ReportingController::class, 'transactionsReport'])->name('fullTransHistory');
-    
+       
        // }   );
 
         
@@ -87,3 +62,41 @@ Route::group(['prefix' => 'admin','middleware' => ['AuthCheckAdmins']], function
 //         Route::get('/table', [DashboardController::class, 'tablepage'])->name('tablepage');
 //     }
 // );
+
+Auth::routes();
+
+// Route admin
+Route::middleware(['auth', 'user-role:admin'])->prefix('access')->group(function () {
+
+   Route::get('/', [DashboardController::class, 'dashboard'])->name('dash');
+   Route::get('/forms', [DashboardController::class, 'dashboardforms'])->name('adminforms');
+
+   Route::get('/blank', [DashboardController::class, 'blankpage'])->name('blankpage');
+
+   Route::get('/table', [DashboardController::class, 'tablepage'])->name('tablepage');
+   Route::get('/StaffManagement', [DashboardController::class, 'managestaff'])->name('managestaff');
+
+   Route::post('/RegisterStaff', [DashboardController::class, 'registerStaff'])->name('savestaffdata');
+
+   //transaction purpose
+   Route::get('/RegisterTransactionpurpose', [TransactionPurposeController::class, 'create'])->name('transactionpurposecreate');
+   Route::post('/Savetransactionpurpose', [TransactionPurposeController::class, 'RegisterPurpose'])->name('savetransactionpurpose');
+
+   //fund allocation
+   Route::get('/StaffFundAllocation', [AllocationsController::class, 'Fundallocation'])->name('fundallocations');
+   //save fund allocated
+   Route::any('/AllocationFund', [AllocationsController::class, 'allocateFunds'])->name('allocate.funds');
+
+   Route::any('/AllocationFundHistory', [AllocationsController::class, 'getAllocationHistory'])->name('AllocationHistory');
+
+   Route::get('/TransactionsHistory', [TransactionsController::class, 'getTransactionHistory'])->name('TransHistory');
+
+   Route::get('/TransactionsHistory/{staffId}', [ReportingController::class, 'StaffTransactionReport'])->name('staffTransHistory');
+   
+   Route::get('/FullTransactionsHistory', [ReportingController::class, 'transactionsReport'])->name('fullTransHistory');
+
+    //Route::get('/home', [HomeController::class, 'userHome'])->name('user.home');
+});
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

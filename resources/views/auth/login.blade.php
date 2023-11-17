@@ -49,11 +49,7 @@
                        
                         <img src="{{ asset('logo/pettyQashLogo.png') }}" alt="PettyQash" width="210" height="100">
 							<h1 class="h2">Welcome to PettyQash</h1>
-                            @if(Session::get('fail'))
-                            <div class="alert alert-danger">
-                                {{ Session::get('fail') }}
-                            </div>
-                            @endif
+                            
 							<p class="lead">
 								Sign in to your account to continue
 							</p>
@@ -61,9 +57,15 @@
 
 						<div class="card">
 							<div class="card-body">
+							@if(Session::get('error'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('error') }}
+                            </div>
+                            @endif
 								<div class="m-sm-4">
 									
-									<form action="{{ route('auth.admin.check') }}" method="POST" autofill="off">
+								<form method="POST" action="{{ route('login') }}">
+                      
                                     @csrf
 										<div class="mb-3">
 											<label class="form-label">Email</label>
