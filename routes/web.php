@@ -7,6 +7,7 @@ use App\Http\Controllers\AllocationsController;
 use App\Http\Controllers\TransactionPurposeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReportingController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,7 @@ Auth::routes();
 Route::middleware(['auth', 'user-role:admin'])->prefix('access')->group(function () {
 
    Route::get('/', [DashboardController::class, 'dashboard'])->name('dash');
+   Route::get('/Dashboard', [DashboardController::class, 'dashboard'])->name('admindash');
    Route::get('/forms', [DashboardController::class, 'dashboardforms'])->name('adminforms');
 
    Route::get('/blank', [DashboardController::class, 'blankpage'])->name('blankpage');
@@ -94,6 +96,12 @@ Route::middleware(['auth', 'user-role:admin'])->prefix('access')->group(function
    Route::get('/TransactionsHistory/{staffId}', [ReportingController::class, 'StaffTransactionReport'])->name('staffTransHistory');
    
    Route::get('/FullTransactionsHistory', [ReportingController::class, 'transactionsReport'])->name('fullTransHistory');
+
+    //users auth pages
+    Route::get('/Listusers', [UserController::class, 'index'])->name('users.index');
+    Route::post('/update-user', [UserController::class, 'updateUser'])->name('update_user');
+    Route::any('/users/{user}/change-password', [UserController::class, 'changePassword'])->name('change_password');
+    Route::post('/Userregister', [UserController::class, 'registerUser'])->name('registerUser');
 
     //Route::get('/home', [HomeController::class, 'userHome'])->name('user.home');
 });
