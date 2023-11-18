@@ -31,9 +31,9 @@ Route::get('/AuthLogin', [AuthController::class, 'DashboardLogin'])->name('AuthL
 Route::post('/Authcheck',[AuthController::class, 'checkadmin'])->name('auth.admin.check');
 Route::get('/Authlogout',[AuthController::class, 'adminlogout'])->name('auth.admin.logout');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::group(['prefix' => 'admin','middleware' => ['AuthCheckAdmins']], function() {});
 
@@ -42,7 +42,7 @@ Route::group(['prefix' => 'admin','middleware' => ['AuthCheckAdmins']], function
 
        // Route::group(['prefix' => 'admins'], function () {
 
-        Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
+        //Route::get('/', [DashboardController::class, 'dashboard'])->name('admindash');
 
        
        // }   );
